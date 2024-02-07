@@ -30,6 +30,7 @@ export async function POST(req: Request) {
       },
     });
   } catch (error: any) {
+    console.log(error);
     if (error instanceof ZodError) {
       return NextResponse.json(
         {
@@ -41,7 +42,7 @@ export async function POST(req: Request) {
       );
     }
 
-    if (error.code === 'P2002') {
+    if (error.code === '23505') {
       return NextResponse.json(
         {
           status: 'fail',
